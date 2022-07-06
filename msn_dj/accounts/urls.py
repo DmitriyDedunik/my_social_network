@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin, auth
 from django.urls import path, include
-from .views import SignupView
+from .views import SignupView, ok
+from django.http import HttpResponse
 
 urlpatterns = [
      path('signup/', SignupView.as_view(), name='signup'),
-     path('login/', include('django.contrib.auth.views.login'), name='login'),
+     path('ok/', ok, name='ok'),
 ]
