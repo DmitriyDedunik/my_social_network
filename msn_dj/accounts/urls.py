@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin, auth
 from django.urls import path, include
-from .views import SignupView, ok
+from .views import SignupView, profile, profile_update
 from django.http import HttpResponse
+
+app_name = 'accounts'
 
 urlpatterns = [
      path('signup/', SignupView.as_view(), name='signup'),
-     path('ok/', ok, name='ok'),
+     path('profile/', profile, name='profile'),
+     path('profile_update/', profile_update, name='profile_update'),
 ]

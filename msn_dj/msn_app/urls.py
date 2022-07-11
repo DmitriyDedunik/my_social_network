@@ -22,5 +22,5 @@ from . import views
 app_name = 'msn_app'
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='index'),
 ]

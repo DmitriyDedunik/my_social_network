@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Кабинет пользователя</h1>
+    <p>Добрый день, {{ user.username }}</p>
+    <a href="{% url 'accounts:profile_update' %}">Редактировать</a>   
+{% endblock %}
