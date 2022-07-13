@@ -23,8 +23,9 @@ def profile_update(request):
     template_name = 'about.html'
     if request.method == "POST":
         form = AboutForm(request.POST)
-        form.user = request.user
         if form.is_valid():
+            form.save()
+            form.user = request.user
             form.save()
             return redirect('accounts:profile')
         else:

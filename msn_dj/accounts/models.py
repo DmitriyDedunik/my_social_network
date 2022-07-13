@@ -1,6 +1,3 @@
-from datetime import date
-from urllib import request
-import django
 from django.db import models
 from django.conf import settings
 

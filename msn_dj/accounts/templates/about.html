@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Обо мне</h1>
     <p>{{ user.username }}</p>
-    <form action="" enctype="multipart/form-data" method="post"></form>
+    <form action="" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Записать</button>
