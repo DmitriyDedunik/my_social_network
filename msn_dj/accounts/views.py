@@ -22,10 +22,11 @@ def profile(request):
 def profile_update(request):
     template_name = 'about.html'
     if request.method == "POST":
-        form = AboutForm(request.POST)
+        # about = About.objects.get(user_id=request.user.id)
+        about = request.POST.dict()
+        about['user'] = request.user
+        form = AboutForm(about, request.FILES)
         if form.is_valid():
-            form.save()
-            form.user = request.user
             form.save()
             return redirect('accounts:profile')
         else:
