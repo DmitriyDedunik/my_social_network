@@ -1,12 +1,15 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
+
+User._meta.get_field('email').blank = False
 
 class About(models.Model):
     date_birth = models.DateField(verbose_name='Дата рождения')
     city = models.ForeignKey('City', on_delete=models.SET_NULL, null=True, verbose_name='Город')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT, verbose_name='Пользователь')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT, verbose_name='Пользователь', unique=True)
     hobbies = models.TextField(max_length=500, verbose_name='Хобби')
-    main_photo = models.ImageField(upload_to='users_photo', verbose_name='Фотография')
+    main_photo = models.ImageField(upload_to='users_photo', verbose_name='Фотография', null=True, blank=True)
 
 class City(models.Model):
     name = models.TextField(max_length=150)

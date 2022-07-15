@@ -1,6 +1,9 @@
+from pyexpat import model
 from .models import About
 from django.forms import HiddenInput, ModelForm, SelectDateWidget, DateInput
 from datetime import datetime
+from django.contrib.auth.forms import UserModel, UserCreationForm
+from django.db import models
 
 class AboutForm(ModelForm):
     
@@ -17,3 +20,10 @@ class AboutForm(ModelForm):
             'id': HiddenInput(),
             # 'date_birth': DateInput(attrs={'type':'date'})
             }
+
+
+class RigisterUserForm(UserCreationForm):
+    class Meta:
+        model = UserModel
+        fields = ('username', 'email', 'password1', 'password2')
+

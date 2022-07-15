@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from dataclasses import field
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -6,12 +7,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import About
-from .forms import AboutForm
+from .forms import AboutForm, RigisterUserForm
 from django.views.generic.edit import CreateView, UpdateView
 
 
 class SignupView(generic.CreateView):
-    form_class = UserCreationForm
+    form_class = RigisterUserForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
