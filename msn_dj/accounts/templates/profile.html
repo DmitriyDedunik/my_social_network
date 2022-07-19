@@ -3,5 +3,34 @@
 {% block content %}
     <h1>Кабинет пользователя</h1>
     <p>Добрый день, {{ user.username }}</p>
-    <a href="{% url 'accounts:about' %}">Редактировать</a>   
+    <a href="{% url 'accounts:about' %}">Редактировать обо мне</a>
+    <h2>Друзья</h2>
+    <ul>
+    {% for fc in friends %}
+        <li>{{fc.user_with_add.username}}</li> 
+    {%endfor%}
+    </ul> 
+    <h2>Заявки в друзья</h2>
+    {%if invitation_friends_inc%}
+    <h3>Входящие</h3>
+    <ul>
+        {% for fc in invitation_friends_inc %}
+            <li>{{fc.user_who_add.username}} <a href="{% url 'accounts:friends_confirmation' fc.id %}">Принять</a></li> 
+        {%endfor%}
+    </ul>
+    {%endif%}
+    {%if invitation_friends%}     
+    <h3>Исходящие</h3>
+    <ul>
+        {% for fc in invitation_friends %}
+            <li>{{fc.user_who_add.username}}</li> 
+        {%endfor%}
+    </ul>
+    {%endif%}       
+    <h2>Предлагаем друзей</h2>
+    <ul>
+    {% for fc in friend_candidat_list %}
+        <li>{{fc.username}} <a href="{% url 'accounts:friend_add' fc.id %}">Добавить</a></li> 
+    {%endfor%}
+    </ul>
 {% endblock %}

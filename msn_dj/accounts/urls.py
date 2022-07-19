@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin, auth
 from django.urls import path, include
-from .views import SignupView, profile, profile_update
+from .views import SignupView, profile, profile_update, AboutUpdateView, friend_add, AboutCreateView, friends_confirmation
 from django.http import HttpResponse
 
 app_name = 'accounts'
@@ -24,4 +24,8 @@ urlpatterns = [
      path('signup/', SignupView.as_view(), name='signup'),
      path('profile/', profile, name='profile'),
      path('about/', profile_update, name='about'),
+     path('aboutupdate/<int:pk>/', AboutUpdateView.as_view(), name='aboutupdate'),
+     path('aboutcreate/', AboutCreateView.as_view(), name='aboutcreate'),
+     path('friend_add/<int:pk>/', friend_add, name='friend_add'),
+     path('friends_confirmation/<int:pk>/', friends_confirmation, name='friends_confirmation'),
 ]

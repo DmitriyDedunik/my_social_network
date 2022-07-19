@@ -13,11 +13,11 @@ class AboutForm(ModelForm):
         year_range = tuple([i for i in range(cur_year - 100, cur_year + 1)])
 
         model = About
-        fields = ('date_birth', 'city', 'hobbies', 'main_photo', 'user', 'id')
+        fields = ('date_birth', 'city', 'hobbies', 'main_photo')
         widgets = {
             'date_birth': SelectDateWidget(years=year_range),
-            'user': HiddenInput(),
-            'id': HiddenInput(),
+            # 'user': HiddenInput(),
+            # 'id': HiddenInput(),
             # 'date_birth': DateInput(attrs={'type':'date'})
             }
 
@@ -26,4 +26,11 @@ class RigisterUserForm(UserCreationForm):
     class Meta:
         model = UserModel
         fields = ('username', 'email', 'password1', 'password2')
+
+
+class FriendAddForm(ModelForm):
+    class Meta:
+        fields = ('user_who_add', 'user_with_add', 'accept')
+
+
 
