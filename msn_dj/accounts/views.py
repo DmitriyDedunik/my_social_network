@@ -43,6 +43,8 @@ def profile(request):
    
     template_name = 'profile.html'
     
+    about = About.objects.get(user_id=request.user.id)
+
     invitation_friends = Friend.objects.filter(user_with_add=request.user.id)
     invitation_friends = invitation_friends.filter(accept=False)
     invitation_friends_id = []
@@ -70,6 +72,7 @@ def profile(request):
                'invitation_friends' : invitation_friends,
                'invitation_friends_inc' : invitation_friends_inc,
                'friend_candidat_list' : friend_candidat_list,
+               'about' : about
                }
                
     return render(request, template_name, context)

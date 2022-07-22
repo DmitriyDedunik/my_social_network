@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{%load static%}
 
 {% block content %}
     <h1>Кабинет пользователя</h1>
@@ -33,4 +34,15 @@
         <li>{{fc.username}} <a href="{% url 'accounts:friend_add' fc.id %}">Добавить</a></li> 
     {%endfor%}
     </ul>
+{% endblock %}
+
+{% block user_blog %}
+    {% if about.main_photo %}
+        <img src="{% static '/media/1.png' %}" class="card-img-top" alt="...">
+    {% else %}
+        <img src="{% static 'img/blank.png' %}" class="card-img-top" alt="...">
+    {% endif %}
+    <p>Дата рождения: {{about.date_birth}}</p>
+    <p>Город: {{about.city}}</p>
+    <p>Хобби: {{about.hobbies}}</p>
 {% endblock %}
