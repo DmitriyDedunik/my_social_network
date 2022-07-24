@@ -38,7 +38,7 @@
 
 {% block user_blog %}
     {% if about.main_photo %}
-        <img src="{% static '/media/1.png' %}" class="card-img-top" alt="...">
+        <img src="{{about.main_photo.url}}" class="card-img-top" alt="'{{about.main_photo.url}}'">
     {% else %}
         <img src="{% static 'img/blank.png' %}" class="card-img-top" alt="...">
     {% endif %}
