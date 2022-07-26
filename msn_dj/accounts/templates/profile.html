@@ -8,7 +8,7 @@
     <h2>Друзья</h2>
     <ul>
     {% for fc in friends %}
-        <li>{{fc.user_with_add.username}}</li> 
+        <li><a href="{% url 'accounts:profile' fc.user_who_add.id %}">{{fc.user_who_add.username}}</a></li> 
     {%endfor%}
     </ul> 
     <h2>Заявки в друзья</h2>
@@ -38,7 +38,7 @@
 
 {% block user_blog %}
     {% if about.main_photo %}
-        <img src="{{about.main_photo.url}}" class="card-img-top" alt="'{{about.main_photo.url}}'">
+        <img src="{{about.main_photo.url}}" class="card-img-top" alt="...">
     {% else %}
         <img src="{% static 'img/blank.png' %}" class="card-img-top" alt="...">
     {% endif %}

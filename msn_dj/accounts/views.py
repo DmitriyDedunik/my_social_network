@@ -39,11 +39,11 @@ class AboutCreateView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-def profile(request):
+def profile(request, user_id):
    
     template_name = 'profile.html'
     
-    about = About.objects.get(user_id=request.user.id)
+    about = About.objects.get(user_id=user_id)
 
     invitation_friends = Friend.objects.filter(user_with_add=request.user.id)
     invitation_friends = invitation_friends.filter(accept=False)

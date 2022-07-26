@@ -22,7 +22,7 @@ app_name = 'accounts'
 
 urlpatterns = [
      path('signup/', SignupView.as_view(), name='signup'),
-     path('profile/', profile, name='profile'),
+     path('profile/<int:user_id>/', profile, name='profile'),
      path('about/', profile_update, name='about'),
      path('aboutupdate/<int:pk>/', AboutUpdateView.as_view(), name='aboutupdate'),
      path('aboutcreate/', AboutCreateView.as_view(), name='aboutcreate'),
